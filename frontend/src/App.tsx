@@ -1,10 +1,10 @@
-import './App.css'
+import { StyleGuide } from "./pages/StyleGuide";
+import './styles/global.scss';
 
 function App() {
 
   return (
-    <>
-    </>
+    <StyleGuide />
   )
 }
 
