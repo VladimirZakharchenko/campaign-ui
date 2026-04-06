@@ -1,0 +1,88 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing-1;
+
+	&.fullWidth {
+		width: 100%;
+	}
+}
+
+.label {
+	font-size: $font-size-sm;
+	font-weight: $font-weight-medium;
+	color: var(--color-text-secondary, $gray-700);
+}
+
+.inputWrapper {
+	position: relative;
+	width: 100%;
+}
+
+.input {
+	padding: $spacing-3;
+	font-size: $font-size-base;
+	border: 1px solid var(--color-border, $gray-300);
+	border-radius: $border-radius-md;
+	background-color: var(--color-background, white);
+	color: var(--color-text-primary, $gray-900);
+	transition: all $transition-fast;
+	width: 100%;
+
+	&::placeholder {
+		color: $gray-400;
+	}
+
+	&:focus {
+		outline: none;
+		border-color: var(--color-primary, $primary);
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+	}
+
+	&.error {
+		border-color: $danger;
+
+		&:focus {
+			box-shadow: 0 0 0 3px rgba($danger, 0.1);
+		}
+	}
+
+	&:disabled {
+		background-color: var(--color-background-alt, $gray-100);
+		cursor: not-allowed;
+	}
+
+	&.fullWidth {
+		width: 100%;
+	}
+}
+
+.passwordToggle {
+	position: absolute;
+	right: $spacing-3;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: $font-size-lg;
+	opacity: 0.6;
+	padding: 0;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.errorMessage {
+	font-size: $font-size-xs;
+	color: $danger;
+}
+
+.helperText {
+	font-size: $font-size-xs;
+	color: var(--color-text-secondary, $gray-500);
+}
