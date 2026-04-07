@@ -1,11 +1,29 @@
 import { useState } from "react";
-import { Button, Input } from "./components";
+import {
+  Button,
+  Input,
+  Checkbox,
+  Radio,
+  Switch,
+  Select,
+  Textarea,
+} from "./components";
 import "./styles/global.scss";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [buttonClickCount, setButtonClickCount] = useState(0);
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState("option1");
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [selectValue, setSelectValue] = useState("");
+  const [textareaValue, setTextareaValue] = useState("");
+
+  const selectOptions = [
+    { value: "option1", label: "Вариант 1" },
+    { value: "option2", label: "Вариант 2" },
+    { value: "option3", label: "Вариант 3" },
+  ];
 
   return (
     <div
@@ -105,23 +123,222 @@ function App() {
         </div>
       </section>
 
-      {/* Interactive Demo */}
-      <section>
-        <h2>Interactive Demo</h2>
+      {/* Checkbox Demo */}
+      <section
+        style={{
+          background: "var(--color-background-alt)",
+          padding: "1.5rem",
+          borderRadius: "1rem",
+        }}
+      >
+        <h2>☑️ Checkbox</h2>
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             gap: "1rem",
-            alignItems: "center",
             marginTop: "1rem",
           }}
         >
-          <Button onClick={() => setButtonClickCount((prev) => prev + 1)}>
-            Click me!
-          </Button>
-          <p>
-            Clicked <strong>{buttonClickCount}</strong> times
-          </p>
+          <Checkbox
+            label="Обычный чекбокс"
+            checked={checkboxChecked}
+            onChange={(e) => setCheckboxChecked(e.target.checked)}
+          />
+          <Checkbox
+            label="Чекбокс с подсказкой"
+            helperText="Это дополнительная информация"
+          />
+          <Checkbox label="Чекбокс с ошибкой" error="Обязательное поле" />
+          <Checkbox label="Неактивный чекбокс" disabled />
+          <Checkbox label="Indeterminate чекбокс" indeterminate />
+        </div>
+      </section>
+
+      {/* Radio Demo */}
+      <section
+        style={{
+          background: "var(--color-background-alt)",
+          padding: "1.5rem",
+          borderRadius: "1rem",
+        }}
+      >
+        <h2>🔘 Radio</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+            marginTop: "1rem",
+          }}
+        >
+          <Radio
+            name="demoRadio"
+            label="Вариант 1"
+            value="option1"
+            checked={radioValue === "option1"}
+            onChange={(e) => setRadioValue(e.target.value)}
+          />
+          <Radio
+            name="demoRadio"
+            label="Вариант 2"
+            value="option2"
+            checked={radioValue === "option2"}
+            onChange={(e) => setRadioValue(e.target.value)}
+          />
+          <Radio
+            name="demoRadio"
+            label="Вариант 3"
+            value="option3"
+            checked={radioValue === "option3"}
+            onChange={(e) => setRadioValue(e.target.value)}
+            helperText="С дополнительным описанием"
+          />
+          <Radio label="Неактивный радио" disabled />
+        </div>
+        <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+          Выбрано: {radioValue}
+        </p>
+      </section>
+
+      {/* Switch Demo */}
+      <section
+        style={{
+          background: "var(--color-background-alt)",
+          padding: "1.5rem",
+          borderRadius: "1rem",
+        }}
+      >
+        <h2>🔘 Switch</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            marginTop: "1rem",
+          }}
+        >
+          <Switch
+            label="Уведомления"
+            description="Получать уведомления на email"
+            checked={switchChecked}
+            onChange={(e) => setSwitchChecked(e.target.checked)}
+          />
+          <Switch
+            label="Темная тема"
+            description="Автоматически"
+            size="small"
+          />
+          <Switch label="Режим экономии" size="large" />
+          <Switch label="Неактивный" disabled />
+        </div>
+        <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+          Уведомления: {switchChecked ? "Вкл" : "Выкл"}
+        </p>
+      </section>
+
+      {/* Select Demo */}
+      <section
+        style={{
+          background: "var(--color-background-alt)",
+          padding: "1.5rem",
+          borderRadius: "1rem",
+        }}
+      >
+        <h2>📋 Select</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            marginTop: "1rem",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "4rem",
+              marginTop: "1rem",
+            }}
+          >
+            <div>
+              <Select
+                label="Выберите вариант"
+                options={selectOptions}
+                placeholder="-- Выберите --"
+                value={selectValue}
+                onChange={(e) => setSelectValue(e.target.value)}
+              />
+              <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+                Выбрано: {selectValue || "ничего"}
+              </p>
+            </div>
+            <Select
+              label="С подсказкой"
+              options={selectOptions}
+              helperText="Выберите один из вариантов"
+            />
+            <Select
+              label="С ошибкой"
+              options={selectOptions}
+              error="Обязательное поле"
+            />
+            <Select label="Неактивный" options={selectOptions} disabled />
+          </div>
+
+          <Select label="Full width" options={selectOptions} fullWidth />
+        </div>
+      </section>
+
+      {/* Textarea Demo */}
+      <section
+        style={{
+          background: "var(--color-background-alt)",
+          padding: "1.5rem",
+          borderRadius: "1rem",
+        }}
+      >
+        <h2>📝 Textarea</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            marginTop: "1rem",
+          }}
+        >
+          <Textarea
+            label="Комментарий"
+            placeholder="Введите ваш комментарий..."
+            value={textareaValue}
+            onChange={(e) => setTextareaValue(e.target.value)}
+            rows={3}
+          />
+          <Textarea
+            label="С подсказкой"
+            placeholder="Ваше сообщение"
+            helperText="Мы ответим в течение 24 часов"
+            rows={2}
+          />
+          <Textarea
+            label="С ошибкой"
+            placeholder="Сообщение"
+            error="Сообщение не может быть пустым"
+            rows={2}
+          />
+          <Textarea
+            label="Неактивный"
+            placeholder="Недоступно"
+            disabled
+            rows={2}
+          />
+          <Textarea
+            label="Full width"
+            placeholder="На всю ширину"
+            fullWidth
+            rows={2}
+          />
         </div>
       </section>
     </div>
