@@ -38,8 +38,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ) => {
     const selectId = id || `select-${useId()}`;
 
-		console.log(styles)
-
     return (
       <div
         className={`${styles.wrapper} ${fullWidth ? styles.fullWidth : ""} ${className}`}
