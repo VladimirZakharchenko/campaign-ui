@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useId, useRef } from "react";
+import React, { forwardRef, useCallback, useEffect, useId, useRef } from "react";
 import styles from "./Checkbox.module.scss";
 
 export interface CheckboxProps extends Omit<
@@ -38,16 +38,17 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [indeterminate]);
 
-    const setRefs = (element: HTMLInputElement | null) => {
-      if (typeof ref === "function") {
-        ref(element);
-      } else if (ref) {
-        (ref as React.RefObject<HTMLInputElement | null>).current = element;
-      }
-      if (element) {
-        (inputRef as React.RefObject<HTMLInputElement | null>).current = element;
-      }
-    };
+    const setRefs = useCallback((element: HTMLInputElement | null) => {
+        if (ref) {
+          if (typeof ref === "function") {
+            ref(element);
+          } else {
+            ref.current = element;
+          }
+        }
+
+        inputRef.current = element;
+      }, [ref]);
 
     return (
       <div className={`${styles.wrapper} ${className}`}>
