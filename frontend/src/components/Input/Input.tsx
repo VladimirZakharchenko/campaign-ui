@@ -27,7 +27,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     const [showPassword, setShowPassword] = useState(false);
-    const inputId = id || useId();
+    const inputId = id || `input-${useId()}`;
     const isPassword = type === "password";
 
     const inputClasses = [
@@ -93,3 +93,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+
+Input.displayName = 'Input';
