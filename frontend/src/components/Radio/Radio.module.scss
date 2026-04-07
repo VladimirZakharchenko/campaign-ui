@@ -1,0 +1,90 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing-1;
+}
+
+.container {
+	display: inline-flex;
+	align-items: center;
+	gap: $spacing-3;
+	cursor: pointer;
+	position: relative;
+	user-select: none;
+
+	&.hasError {
+		.radioMark {
+			border-color: $danger;
+		}
+	}
+}
+
+.input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+
+	&:checked~.radioMark {
+		border-color: var(--color-primary, $primary);
+
+		&::after {
+			display: block;
+		}
+	}
+
+	&:focus~.radioMark {
+		box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+	}
+
+	&:disabled~.radioMark {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	&:disabled~.label {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+.radioMark {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--color-border, $gray-300);
+	border-radius: 50%;
+	background-color: var(--color-background, white);
+	transition: all $transition-fast;
+
+	&::after {
+		content: '';
+		position: absolute;
+		display: none;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background-color: var(--color-primary, $primary);
+	}
+}
+
+.label {
+	font-size: $font-size-sm;
+	color: var(--color-text-primary, $gray-900);
+}
+
+.errorMessage {
+	font-size: $font-size-xs;
+	color: $danger;
+}
+
+.helperText {
+	font-size: $font-size-xs;
+	color: var(--color-text-secondary, $gray-500);
+}
