@@ -20,6 +20,18 @@ export const storage = {
     }
   },
 
+  /**
+   * Check if key exists in localStorage
+   */
+  has: (key: string): boolean => {
+    try {
+      return window.localStorage.getItem(key) !== null;
+    } catch (error) {
+      console.error(`Error checking localStorage key "${key}":`, error);
+      return false;
+    }
+  },
+
   remove: (key: string): void => {
     try {
       window.localStorage.removeItem(key);
@@ -56,6 +68,18 @@ export const sessionStorage = {
       window.sessionStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
       console.error(`Error writing sessionStorage key "${key}":`, error);
+    }
+  },
+
+  /**
+   * Check if key exists in sessionStorage
+   */
+  has: (key: string): boolean => {
+    try {
+      return window.sessionStorage.getItem(key) !== null;
+    } catch (error) {
+      console.error(`Error checking sessionStorage key "${key}":`, error);
+      return false;
     }
   },
 
