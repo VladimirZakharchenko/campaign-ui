@@ -4,9 +4,11 @@
 
 ### *React Component Library for Marketing Campaigns*
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.1.1-blue)
 ![React](https://img.shields.io/badge/React-18.2-61dafb)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6)
+
+**📦 Current Version: v0.1.1** — *Bugfix release (Jest configuration)*
 
 </div>
 
