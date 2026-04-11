@@ -1,0 +1,112 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing-1;
+}
+
+.container {
+	display: inline-flex;
+	align-items: center;
+	gap: $spacing-3;
+	cursor: pointer;
+	position: relative;
+	user-select: none;
+
+	&.hasError {
+		.checkmark {
+			border-color: $danger;
+		}
+	}
+}
+
+.input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+
+	&:checked~.checkmark {
+		background-color: var(--color-primary, $primary);
+		border-color: var(--color-primary, $primary);
+
+		&::after {
+			display: block;
+			content: '';
+			position: absolute;
+			left: 6px;
+			top: 2px;
+			width: 5px;
+			height: 10px;
+			border: solid white;
+			border-width: 0 2px 2px 0;
+			transform: rotate(45deg);
+		}
+	}
+
+	&:indeterminate~.checkmark {
+		background-color: var(--color-primary, $primary);
+		border-color: var(--color-primary, $primary);
+
+		&::after {
+			display: block;
+			content: '';
+			position: absolute;
+			left: 4px;
+			top: 8px;
+			width: 10px;
+			height: 2px;
+			background-color: white;
+			border: none;
+			transform: none;
+		}
+	}
+
+	&:focus~.checkmark {
+		box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+	}
+
+	&:disabled~.checkmark {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	&:disabled~.label {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+.checkmark {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--color-border, $gray-300);
+	border-radius: $border-radius-sm;
+	background-color: var(--color-background, white);
+	transition: all $transition-fast;
+	flex-shrink: 0;
+
+	&::after {
+		content: '';
+		position: absolute;
+		display: none;
+	}
+}
+
+.label {
+	font-size: $font-size-sm;
+	color: var(--color-text-primary, $gray-900);
+}
+
+.errorMessage {
+	font-size: $font-size-xs;
+	color: $danger;
+}
+
+.helperText {
+	font-size: $font-size-xs;
+	color: var(--color-text-secondary, $gray-500);
+}
