@@ -12,13 +12,13 @@
 
 <div align="center" >
 
-[Documentation](#) • [Current Features](#-current-features) • [Roadmap](#-roadmap) • [Getting Started](#-quick-start)
+[About](#about) • [Current Features](#current-features) • [Roadmap](#roadmap) • [Quick Start](#quick-start) • [Tech Stack](#tech-stack) • [Contributing](#contributing) • [License](#license) • [Contact](#contact)
 
 </div>
 
 ---
 
-## 📖 About
+<h2 id="about">📖 About</h2>
 
 **CampaignUI** is a modern React component library designed specifically for marketing campaigns, lead generation forms, and promotional pages. Built with TypeScript, tested with Jest, and following best practices.
 
@@ -33,11 +33,12 @@
 
 ---
 
-## ✨ Current Features (v0.1.0)
+<h2 id="current-features">✨ Current Features (v0.1.0)</h2>
 
 ### 🎨 Core UI Components (7 components)
+
 | Component | Status | Description |
-|-----------|--------|-------------|
+| ----------- | -------- | ------------- |
 | `Button` | ✅ | 5 variants, 3 sizes, loading state |
 | `Input` | ✅ | Label, error, helperText, password toggle |
 | `Checkbox` | ✅ | Label, error, helperText, indeterminate state |
@@ -47,34 +48,38 @@
 | `Textarea` | ✅ | Label, error, helperText, rows support |
 
 ### 🛠️ Utilities & Hooks
+
 | Category | Items |
-|----------|-------|
+| ---------- | ------- |
 | **Validators** | Email, phone, name, URL validation |
 | **Formatters** | Date, number, price, phone formatting |
 | **Storage** | Safe localStorage/sessionStorage wrapper |
 | **Hooks** | `useDebounce`, `useLocalStorage`, `useMediaQuery`, `useClickOutside` |
 
-
 ---
 
-## 🗺️ Roadmap
+<h2 id="roadmap">🗺️ Roadmap</h2>
 
 ### v0.2.0 (In Progress)
+
 - [ ] `LeadForm` — Lead generation form with validation and draft saving
 - [ ] `CountdownTimer` — Timer for limited-time offers
 - [ ] `PromoBanner` — Banner for promotions with A/B testing
 
 ### v0.3.0 (Planned)
+
 - [ ] `DynamicContent` — Personalization based on user behavior
 - [ ] `SocialProof` — Reviews, ratings, and case studies
 - [ ] `ExitIntent` — Popup for exit intent
 
 ### v0.4.0 (Planned)
+
 - [ ] Financial components (CreditCalculator, InvestmentWidget)
 - [ ] Analytics components (ConversionTracker, HeatmapWrapper)
 - [ ] Performance components (LazyImage, VirtualizedList)
 
 ### v1.0.0 (Future)
+
 - [ ] Full Storybook documentation
 - [ ] CI/CD pipeline with GitHub Actions
 - [ ] Docker containerization
@@ -82,9 +87,10 @@
 
 ---
 
-## 🚀 Quick Start
+<h2 id="quick-start">🚀 Quick Start</h2>
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 
@@ -167,19 +173,21 @@ function App() {
 
 ---
 
-## 🛠️ Tech Stack
+<h2 id="tech-stack">🛠️ Tech Stack</h2>
+
 | Technology | Purpose |
 | --- | --- |
 | React 18 | UI Library |
 | TypeScript | Type Safety |
-| Vite	| Build Tool |
-| Sass	| Styling with CSS Modules |
-| Jest	| Unit Testing |
-| React Testing Library	| Component Testing |
+| Vite | Build Tool |
+| Sass | Styling with CSS Modules |
+| Jest | Unit Testing |
+| React Testing Library | Component Testing |
 
 ---
 
-## 🤝 Contributing
+<h2 id="contributing">🤝 Contributing</h2>
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
@@ -189,6 +197,7 @@ function App() {
 ---
 
 ## Commit Convention
+
 We follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 
 - feat: — New feature
@@ -200,13 +209,13 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ---
 
-## 📄 License
+<h2 id="license">📄 License</h2>
 
 MIT © [Vladimir Zakharchenko](https://github.com/VladimirZakharchenko)
 
 ---
 
-## 📧 Contact
+<h2 id="contact">📧 Contact</h2>
 
 - **GitHub:** [@VladimirZakharchenko](https://github.com/VladimirZakharchenko)
 - **Email:** [vladimirzax@mail.ru](mailto:vladimirzax@mail.ru)
