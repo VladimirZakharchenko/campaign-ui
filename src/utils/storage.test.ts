@@ -1,8 +1,15 @@
 import { storage, sessionStorage } from "./storage";
 
 describe("storage", () => {
+  let consoleErrorSpy: jest.SpyInstance;
+
   beforeEach(() => {
     localStorage.clear();
+    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
   });
 
   describe("get", () => {
@@ -18,6 +25,7 @@ describe("storage", () => {
     test("handles JSON parse errors gracefully", () => {
       localStorage.setItem("invalid", "not-json");
       expect(storage.get("invalid", "default")).toBe("default");
+      expect(consoleErrorSpy).toHaveBeenCalled();
     });
   });
 
@@ -60,8 +68,15 @@ describe("storage", () => {
 });
 
 describe("sessionStorage", () => {
+  let consoleErrorSpy: jest.SpyInstance;
+
   beforeEach(() => {
     window.sessionStorage.clear();
+    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
   });
 
   test("get returns default for nonexistent key", () => {
